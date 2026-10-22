@@ -1,0 +1,5 @@
+# Web UI (python3 k8s_manifest_web.py). Tested with PyYAML 6 and Flask 3.
+PyYAML>=5.4
+flask>=2.2
+# optional, production-style serving (used by the Dockerfile):
+# gunicorn>=21

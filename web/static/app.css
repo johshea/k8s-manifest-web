@@ -1,0 +1,71 @@
+[hidden] { display: none !important; }
+:root {
+  --fg: #1d1d1f; --muted: #666; --accent: #1a4f8b; --info: #1f6fd1; --border: #c8c8c8;
+  --bg: #f4f4f4; --panel: #fff; --err: #c62828; --warn: #a15c00; --ok: #2e7d32;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "DejaVu Sans", sans-serif; font-size: 14px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; background: var(--bg); color: var(--fg); }
+header#topbar { padding: 6px 10px 2px; border-bottom: 1px solid var(--border); background: var(--panel); }
+.row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 2px 0 4px; }
+.spacer { flex: 1; }
+.title { font-weight: 600; }
+.help { color: var(--muted); font-size: 12.5px; white-space: pre-line; }
+.small { font-size: 12.5px; }
+select, input[type=text], textarea { font: inherit; padding: 3px 5px; border: 1px solid var(--border); border-radius: 3px; background: #fff; }
+select:disabled, input:disabled { background: #eee; color: #999; }
+#kind { min-width: 14em; } #template { min-width: 13em; } #mode { min-width: 9em; }
+textarea, pre, .mono { font-family: Menlo, "DejaVu Sans Mono", Consolas, monospace; font-size: 12.5px; }
+button { font: inherit; padding: 4px 10px; border: 1px solid #aaa; border-radius: 4px; background: #fafafa; cursor: pointer; }
+button:hover:not(:disabled) { background: #eef3fb; }
+button:disabled { opacity: .5; cursor: default; }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+button.info { border: none; background: none; color: var(--info); padding: 0 2px; font-size: 13px; line-height: 1; cursor: help; border-radius: 50%; }
+button.info:focus-visible { outline: 2px solid var(--info); }
+#tpl-panel { border: 1px solid var(--border); border-radius: 4px; padding: 6px 8px; margin: 2px 0 4px; background: #fafcff; }
+#tpl-fields { display: grid; grid-template-columns: max-content minmax(10em, 16em) max-content minmax(10em, 16em); gap: 3px 8px; align-items: center; margin-bottom: 4px; }
+#edited { margin: 2px 0 4px; }
+main#main { flex: 1; display: grid; grid-template-columns: minmax(420px, 1fr) minmax(360px, 1fr); gap: 8px; padding: 8px; min-height: 0; }
+#form-pane { overflow: auto; min-height: 0; padding-right: 4px; }
+#side-pane { display: flex; flex-direction: column; min-height: 0; }
+#side-pane h2, .pane-head h2 { font-size: 14px; margin: 2px 0 4px; }
+#preview { flex: 3; overflow: auto; margin: 0; padding: 6px 8px; background: #1e1e1e; color: #e6e6e6; border-radius: 4px; min-height: 120px; }
+#issues { flex: 1; overflow: auto; list-style: none; margin: 0; padding: 6px 8px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; min-height: 70px; font-size: 13px; }
+#issues .err { color: var(--err); } #issues .warn { color: var(--warn); } #issues .ok { color: var(--ok); }
+details.section { background: var(--panel); border: 1px solid var(--border); border-radius: 5px; margin: 0 0 8px; padding: 0 10px 4px; }
+details.section > summary { cursor: pointer; padding: 6px 0; font-weight: 600; color: var(--accent); list-style: none; display: flex; align-items: center; gap: 4px; }
+details.section > summary::-webkit-details-marker { display: none; }
+details.section > summary::before { content: "▸"; display: inline-block; width: 1em; }
+details.section[open] > summary::before { content: "▾"; }
+.grid { display: grid; grid-template-columns: minmax(150px, 210px) 1fr; gap: 3px 10px; align-items: start; }
+.grid > .lbl { padding-top: 5px; display: flex; align-items: center; gap: 2px; }
+.grid > .ctl { display: flex; flex-direction: column; min-width: 0; }
+.grid > .ctl input[type=text], .grid > .ctl select, .grid > .ctl textarea { width: 100%; }
+.grid > .ctl input[type=checkbox] { align-self: flex-start; margin: 6px 0; }
+.grid .fhelp { color: var(--muted); font-size: 12px; margin: 1px 0 4px; white-space: pre-line; }
+.grid > .full { grid-column: 1 / -1; }
+.tablefield .thead { display: flex; align-items: center; gap: 2px; font-weight: 600; margin-top: 4px; }
+.tablewrap { display: flex; gap: 6px; align-items: flex-start; margin: 3px 0 8px; }
+.tablewrap table { flex: 1; border-collapse: collapse; background: #fff; border: 1px solid var(--border); font-size: 12.5px; }
+.tablewrap th, .tablewrap td { border-bottom: 1px solid #e3e3e3; padding: 3px 6px; text-align: left; max-width: 18em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tablewrap th { background: #f0f0f0; }
+.tablewrap tbody tr { cursor: pointer; }
+.tablewrap tbody tr.sel { background: #d6e6fb; }
+.tablewrap tbody tr.empty td { color: var(--muted); font-style: italic; cursor: default; }
+.tablebtns { display: flex; flex-direction: column; gap: 2px; }
+.tablebtns button { padding: 2px 6px; min-width: 6.5em; }
+footer { border-top: 1px solid var(--border); background: var(--panel); }
+#buttons { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 10px; }
+#status { padding: 3px 10px; border-top: 1px solid #ddd; font-size: 12.5px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+dialog#rowdlg { width: min(720px, 94vw); max-height: 88vh; padding: 0; border: 1px solid #999; border-radius: 6px; }
+dialog#rowdlg form { display: flex; flex-direction: column; max-height: 88vh; }
+dialog#rowdlg h2 { font-size: 15px; margin: 0; padding: 10px 14px; border-bottom: 1px solid #ddd; }
+#rowdlg-body { overflow: auto; padding: 10px 14px; }
+dialog::backdrop { background: rgba(0,0,0,.25); }
+.err { color: var(--err); white-space: pre-line; padding: 0 14px; }
+.dlg-buttons { display: flex; justify-content: flex-end; gap: 6px; padding: 8px 14px 12px; }
+#tip { position: fixed; z-index: 1000; max-width: 380px; background: #ffffe6; color: #202020; border: 1px solid #8a8a6a;
+       border-radius: 3px; padding: 5px 8px; font-size: 12.5px; line-height: 1.35; white-space: pre-line; box-shadow: 0 2px 6px rgba(0,0,0,.18); pointer-events: none; }
+#tip .tip-title { display: block; font-weight: 600; color: var(--accent); margin-bottom: 1px; }
+@media (max-width: 900px) { main#main { grid-template-columns: 1fr; } #form-pane { max-height: 60vh; } }

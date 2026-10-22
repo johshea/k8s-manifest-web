@@ -1,0 +1,48 @@
+name: Bug report
+description: Something generates wrong YAML, crashes, or behaves unexpectedly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report! Please don't paste real Secrets, tokens or kubeconfigs.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options: [Manifests, Cluster config, Networking & Storage, Not mode-specific]
+    validations:
+      required: true
+  - type: input
+    id: kind
+    attributes:
+      label: Kind / platform / add-on type
+      placeholder: e.g. Deployment, kind, Cilium, AWS EBS
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Steps to reproduce, the values you entered, and the output or error.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: e.g. 1.0.0 or a commit SHA
+  - type: input
+    id: os
+    attributes:
+      label: OS and Python version
+      placeholder: e.g. macOS 15, Python 3.13
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser and version

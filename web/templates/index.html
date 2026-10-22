@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kubernetes Manifest Generator (web)</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header id="topbar">
+  <div class="row">
+    <label class="title" for="mode">Mode:</label><button type="button" class="info" id="info-mode">ⓘ</button>
+    <select id="mode"></select>
+    <label class="title" for="kind" id="type-label">Resource type:</label><button type="button" class="info" id="info-kind">ⓘ</button>
+    <select id="kind"></select>
+    <span id="api-info" class="help"></span>
+    <span class="spacer"></span>
+    <label class="small"><input type="checkbox" id="live" checked> Live preview</label>
+  </div>
+  <div class="row" id="tpl-row">
+    <label class="title" for="template">Template:</label><button type="button" class="info" id="info-template">ⓘ</button>
+    <select id="template"></select>
+    <span id="tpl-desc" class="help">apply a ready-made app (Postgres, nginx, ...) as a set of related kinds</span>
+  </div>
+  <div id="tpl-panel" hidden>
+    <div id="tpl-fields"></div>
+    <div class="row">
+      <button type="button" id="btn-tpl-apply">Apply / re-render</button>
+      <button type="button" id="btn-tpl-download">Download template set (.zip)</button>
+      <span id="tpl-summary" class="help"></span>
+    </div>
+  </div>
+  <div id="edited" class="help"></div>
+</header>
+<main id="main">
+  <section id="form-pane" aria-label="Form"><div id="form"></div></section>
+  <section id="side-pane">
+    <div class="pane-head"><h2 id="preview-title">Preview</h2></div>
+    <pre id="preview" tabindex="0" aria-label="YAML preview"></pre>
+    <h2>Validation</h2>
+    <ul id="issues" aria-live="polite"></ul>
+  </section>
+</main>
+<footer>
+  <div id="buttons">
+    <button type="button" id="btn-refresh" title="Ctrl/Cmd+Enter">Refresh</button>
+    <button type="button" id="btn-validate">Validate</button>
+    <button type="button" id="btn-copy">Copy YAML</button>
+    <button type="button" id="btn-download" title="Ctrl/Cmd+S">Download</button>
+    <button type="button" id="btn-all">Download all edited (.zip)</button>
+    <button type="button" id="btn-bundle-add" class="bundle">Add to bundle</button>
+    <button type="button" id="btn-bundle-save" class="bundle">Download bundle</button>
+    <button type="button" id="btn-bundle-clear" class="bundle">Clear bundle</button>
+    <button type="button" id="btn-reset">Reset kind</button>
+    <button type="button" id="btn-forget" title="Remove every value this page stored in your browser">Forget saved values</button>
+  </div>
+  <div id="status" role="status">Loading…</div>
+</footer>
+<dialog id="rowdlg" aria-labelledby="rowdlg-title">
+  <form method="dialog" id="rowdlg-form">
+    <h2 id="rowdlg-title"></h2>
+    <div id="rowdlg-body" class="grid"></div>
+    <div id="rowdlg-err" class="err" aria-live="assertive"></div>
+    <div class="dlg-buttons">
+      <button type="button" id="rowdlg-ok" class="primary">OK</button>
+      <button type="button" id="rowdlg-cancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
+<div id="tip" role="tooltip" hidden></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

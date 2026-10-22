@@ -1,0 +1,11 @@
+tests
+bin
+tools
+.venv*
+**/__pycache__
+*.png
+*.zip
+_out
+docs
+*.md
+.github
