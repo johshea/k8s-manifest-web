@@ -141,8 +141,6 @@ The suites cover:
 - 964 Flask API checks
 - a Playwright browser test
 
-CI runs the offline suites on Ubuntu and macOS, and the browser test on Ubuntu. See
-[docs/testing.md](docs/testing.md).
 
 ## Contributing
 
