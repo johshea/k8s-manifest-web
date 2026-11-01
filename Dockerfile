@@ -3,7 +3,7 @@
 #   docker run --rm -p 127.0.0.1:8080:8080 k8s-manifest-web      # then open http://localhost:8080
 # The container binds 0.0.0.0 inside, so publish it on 127.0.0.1 as above unless you want it on the
 # network (no login!). Host-header guard: K8SGUI_ALLOWED_HOSTS (comma-separated, '*' = off).
-FROM python:3.13-slim
+FROM python:3.15-slim
 WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt "gunicorn>=21"
